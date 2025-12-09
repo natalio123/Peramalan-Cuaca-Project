@@ -8,99 +8,140 @@
 <body>
 
 <header>
-    <h1>🌤️ UNSRAT Climate AI</h1>
-    <p>Hyper-local Campus Weather Forecasting System</p>
-    <div class="badges">
-        <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python" alt="Python">
-        <img src="https://img.shields.io/badge/Streamlit-App-ff4b4b?style=flat-square&logo=streamlit" alt="Streamlit">
-        <img src="https://img.shields.io/badge/Model-XGBoost-orange?style=flat-square" alt="XGBoost">
-        <img src="https://img.shields.io/badge/Pipeline-n8n-FF6B6B?style=flat-square" alt="n8n">
-    </div>
-</header>
+   <h1 align="center">🌤️ UNSRAT Climate AI</h1>
+<p align="center"><b>Hyper-local Campus Weather Forecasting System</b></p>
+<p align="center">End-to-End Machine Learning Project | ETL – Modeling – Deployment</p>
 
-<section id="background">
-    <h2>🧐 Latar Belakang</h2>
-    <p>Cuaca di daerah tropis seperti Manado sering berubah secara cepat dan bersifat lokal (<i>micro-climate</i>). Informasi prakiraan cuaca umum seringkali kurang spesifik untuk kebutuhan harian mahasiswa. Proyek ini bertujuan membangun sistem <b>End-to-End</b> yang tidak hanya memprediksi angka cuaca, tetapi memberikan <b>Rekomendasi Aksi (<i>Actionable Insights</i>)</b> secara <i>real-time</i> yang spesifik untuk area Kampus UNSRAT Bahu.</p>
-</section>
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?style=flat-square&logo=python"/>
+  <img src="https://img.shields.io/badge/Streamlit-App-ff4b4b?style=flat-square&logo=streamlit"/>
+  <img src="https://img.shields.io/badge/Model-XGBoost-orange?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Pipeline-n8n-FF6B6B?style=flat-square"/>
+</p>
 
-<section id="architecture">
-    <h2>🏗 Arsitektur Solusi</h2>
-    <p>Sistem ini terdiri dari tiga komponen utama yang saling terintegrasi:</p>
-    <ol>
-        <li><b>Automated Data Pipeline (n8n):</b> Mengambil data cuaca aktual dari API BMKG setiap jam dan menyimpannya ke <i>Cloud Database</i> (Google Sheets).</li>
-        <li><b>Machine Learning Engine (XGBoost):</b> Memproses data historis dan input <i>real-time</i> untuk memprediksi kondisi masa depan.</li>
-        <li><b>Interactive Dashboard (Streamlit):</b> Antarmuka pengguna untuk menampilkan prediksi dan rekomendasi cerdas.</li>
-    </ol>
-</section>
+---
 
-<section id="methodology">
-    <h2>🧠 Metodologi & Pendekatan Teknis</h2>
-    
-    <h3>1. Direct Multi-step Forecasting</h3>
-    <p>Alih-alih menggunakan metode <i>Recursive</i> yang rentan error, kami melatih <b>model terpisah</b> untuk setiap horizon waktu (T+1, T+3, T+6 jam).</p>
+## 🧩 Ringkasan Proyek
 
-    <h3>2. Hybrid Strategy (Suhu vs Hujan)</h3>
-    <ul>
-        <li><b>Suhu:</b> Dimodelkan menggunakan <b>Regresi</b> (<code>XGBRegressor</code>).</li>
-        <li><b>Hujan:</b> Dimodelkan menggunakan <b>Klasifikasi</b> (<code>XGBClassifier</code>) dengan penyesuaian <i>threshold</i> (>5mm) untuk mengatasi data <i>imbalanced</i>.</li>
-    </ul>
-</section>
+UNSRAT Climate AI adalah sistem **prakiraan cuaca mikro-kampus** berbasis Machine Learning untuk area kampus UNSRAT Bahu.  
+Proyek ini dirancang agar dapat:
 
-<section id="evaluation">
-    <h2>📊 Evaluasi Model</h2>
-    <p>Model dievaluasi menggunakan data <i>hold-out</i> (Januari 2025 - Sekarang).</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Horizon Waktu</th>
-                <th>MAE Suhu (°C)</th>
-                <th>Akurasi Hujan</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>1 Jam (T+1)</b></td>
-                <td>0.36</td>
-                <td>83%</td>
-                <td>✅ Sangat Presisi</td>
-            </tr>
-            <tr>
-                <td><b>3 Jam (T+3)</b></td>
-                <td>0.59</td>
-                <td>74%</td>
-                <td>✅ Andal</td>
-            </tr>
-            <tr>
-                <td><b>6 Jam (T+6)</b></td>
-                <td>0.71</td>
-                <td>72%</td>
-                <td>👌 Cukup</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+- memprediksi suhu dan hujan hingga **6 jam ke depan**,  
+- memantau kondisi secara **real-time**,  
+- memberi **rekomendasi tindakan** yang mudah dipahami pengguna.
 
-<section id="features">
-    <h2>📱 Fitur Aplikasi</h2>
-    <ul>
-        <li><b>Hybrid Input:</b> Menerima input otomatis dari n8n atau input manual untuk simulasi.</li>
-        <li><b>Smart Recommendation:</b> Menerjemahkan angka prediksi menjadi saran bahasa manusia. Contoh: <i>"☔ Sedia Payung/Jas Hujan: Akan turun hujan ringan. Lantai koridor mungkin licin."</i></li>
-        <li><b>Mode Malam:</b> Dukungan tema gelap untuk kenyamanan visual.</li>
-    </ul>
-</section>
+---
 
-<section id="disclaimer">
-    <h2>ℹ️ Disclaimer Akademis</h2>
-    <div class="highlight-box">
-        <p><b>Sumber Data Latih:</b> Model dilatih menggunakan data historis Stasiun Klimatologi Manado (Mapanget) sebagai <i>regional proxy</i>.</p>
-        <p><b>Validitas Lokasi:</b> Meskipun dilatih dengan data regional, sistem dirancang untuk menerima input kondisi aktual <b>Lokal (Kampus Bahu)</b> saat <i>inference</i>, sehingga prediksi tetap relevan dengan mikroklimat kampus.</p>
-    </div>
-</section>
+## 🏗 Arsitektur Sistem
 
-<div class="footer">
-    <p>Dikembangkan oleh <b>Kelompok 1</b> | Teknik Informatika - Universitas Sam Ratulangi | 2025</p>
-</div>
+Sistem terdiri dari tiga komponen utama:
+
+1. **Automated ETL Pipeline (n8n)**  
+   Mengambil data real-time dari API BMKG setiap jam dan menyimpannya ke Google Sheets.
+
+2. **Machine Learning Engine (Python – Jupyter – XGBoost)**  
+   Digunakan untuk preprocessing, EDA, feature engineering, training, dan evaluasi.
+
+3. **Deployment Layer (Streamlit App)**  
+   Menyajikan prediksi dan rekomendasi tindakan kepada pengguna.
+
+### 📌 *Gambar Arsitektur Workflow (ETL n8n)*  
+<img src="assets/gambar/Etl.png" width="800"/>
+
+### 📌 *Gambar UI Streamlit*  
+<img src="assets/gambar/UI Streamlit.png" width="800"/>
+
+---
+
+## 🧠 Metodologi Teknis
+
+### 1. **Pendekatan Forecasting**
+- Menggunakan **Direct Multi-Step Model**
+- Model terpisah untuk T+1, T+3, T+6 jam
+- Error rendah dan stabil meski horizon waktu meningkat
+
+### 2. **Strategi Hybrid (Regresi + Klasifikasi)**
+- Suhu → `XGBRegressor`
+- Hujan → `XGBClassifier` dengan custom threshold (>5mm)
+
+### 3. **Evaluasi**
+Data evaluasi memakai hold-out Januari 2025 – Sekarang.
+
+| Horizon | MAE Suhu (°C) | Akurasi Hujan | Status |
+|--------|---------------|---------------|--------|
+| T+1    | 0.36          | 83%           | ✔ Sangat Presisi |
+| T+3    | 0.59          | 74%           | ✔ Andal |
+| T+6    | 0.71          | 72%           | ✔ Cukup |
+
+---
+
+## 🧪 Fitur Utama
+
+- 🔁 **ETL otomatis** via n8n  
+- 📊 **Prediksi cuaca** (suhu & hujan)  
+- 📱 **Dashboard interaktif Streamlit**  
+- 🎯 **Rekomendasi aksi otomatis**  
+- 🌙 **Mode gelap**
+
+---
+
+## 👤 **Kontribusi Saya (Applicant Section)**
+
+Kontribusi saya pada proyek ini meliputi:
+
+### 🔹 **1. ETL & Data Engineering**
+- Mendesain dan membangun pipeline **n8n** untuk fetching data BMKG setiap jam  
+- Membersihkan data, memperbaiki anomali, menyiapkan dataset final
+
+### 🔹 **2. Machine Learning (End-to-End Notebook)**
+Saya membuat notebook lengkap mulai dari:
+
+- **Business Understanding**  
+- **Data Understanding (EDA, analisis cuaca Manado)**  
+- **Data Preparation (handling missing, feature engineering, time features)**  
+- **Modeling (XGBRegressor & XGBClassifier multi-step)**  
+- **Hyperparameter Tuning**  
+- **Evaluasi**  
+- **Export model untuk deployment**
+
+### 🔹 **3. Deployment & UI Improvement**
+- Membantu merapikan tampilan Streamlit  
+- Menambah mode gelap & UX improvements  
+- Membuat fitur notifikasi rekomendasi tindakan  
+
+---
+
+## 🔧 Instalasi & Menjalankan Proyek
+
+```bash
+git clone https://github.com/USERNAME/UNSRAT-Climate-AI.git
+cd UNSRAT-Climate-AI
+
+pip install -r requirements.txt
+streamlit run app.py
+
+## 📂 Struktur Folder
+📦 ML_PROJECT
+ ┣ 📂 data/
+ ┣ 📂 notebooks/
+ ┣ 📂 app/
+ ┣ 📂 utils/
+ ┣ app.py
+ ┗ requirements.txt
+
+##📜 Disclaimer Akademis
+Sumber Data Latih:  Model dilatih menggunakan data historis cuaca dari Open-Meteo Historical Weather API dengan koordinat Latitude: 1.48218 dan Longitude: 124.84892 (wilayah Kota Manado). 
+Rentang data historis diambil mulai 13 November 2020 sampai 7 Desember 2025.
+Sistem menerima input real-time dari kampus lokasi (Bahu), sehingga tetap relevan untuk mikroklimat
+
+Mikro-klimat Kampus:</b> Meskipun sumber data berasal dari koordinat kota Manado secara umum, sistem dirancang untuk menerima input kondisi cuaca aktual dari lingkungan Kampus UNSRAT saat inference, sehingga hasil prediksi tetap relevan dengan mikro-klimat lokal kampus.
+Keterbatasan Sistem n8n: Pengambilan data cuaca real-time dilakukan menggunakan n8n Cloud Free Tier
+yang memiliki batas pemakaian selama 14 hari dan batas jumlah eksekusi harian. 
+Keterbatasan ini dapat memengaruhi kontinuitas otomatisasi pipeline data apabila masa percobaan telah habis.
+
+## 📬 Kontak
+Jika ingin berdiskusi atau merekrut saya, hubungi:
+nataliotumuahi@gmail.com
 
 </body>
 </html>
