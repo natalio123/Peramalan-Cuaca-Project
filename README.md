@@ -114,27 +114,33 @@ Saya membuat notebook lengkap mulai dari:
 ## 🔧 Instalasi & Menjalankan Proyek
 
 ```bash
-git clone https://github.com/USERNAME/UNSRAT-Climate-AI.git
-cd UNSRAT-Climate-AI
+git clone https://github.com/natalio123/Peramalan-Cuaca-Project.git
+cd Peramalan-Cuaca-Project
 
 pip install -r requirements.txt
 streamlit run app.py
 
-## 📂 Struktur Folder
-📦 ML_PROJECT
- ┣ 📂 data/
- ┣ 📂 notebooks/
- ┣ 📂 app/
- ┣ 📂 utils/
- ┣ app.py
+```
+---
+
+## 📂 Struktur Folder <br>
+📦 ML_PROJECT <br>
+ ┣ 📂 app/ <br>
+ ┣ 📂 assets/ <br>
+ ┣ 📂 dataset/ <br>
+ ┣ 📂 source/ <br>
+ ┣ 📂src
+ ┣ README.md
  ┗ requirements.txt
 
-##📜 Disclaimer Akademis
+## 📜 Disclaimer Akademis
+
 Sumber Data Latih:  Model dilatih menggunakan data historis cuaca dari Open-Meteo Historical Weather API dengan koordinat Latitude: 1.48218 dan Longitude: 124.84892 (wilayah Kota Manado). 
 Rentang data historis diambil mulai 13 November 2020 sampai 7 Desember 2025.
 Sistem menerima input real-time dari kampus lokasi (Bahu), sehingga tetap relevan untuk mikroklimat
 
 Mikro-klimat Kampus:</b> Meskipun sumber data berasal dari koordinat kota Manado secara umum, sistem dirancang untuk menerima input kondisi cuaca aktual dari lingkungan Kampus UNSRAT saat inference, sehingga hasil prediksi tetap relevan dengan mikro-klimat lokal kampus.
+
 Keterbatasan Sistem n8n: Pengambilan data cuaca real-time dilakukan menggunakan n8n Cloud Free Tier
 yang memiliki batas pemakaian selama 14 hari dan batas jumlah eksekusi harian. 
 Keterbatasan ini dapat memengaruhi kontinuitas otomatisasi pipeline data apabila masa percobaan telah habis.
