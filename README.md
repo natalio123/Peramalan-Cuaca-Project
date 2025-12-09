@@ -114,8 +114,8 @@ Saya membuat notebook lengkap mulai dari:
 ## 🔧 Instalasi & Menjalankan Proyek
 
 ```bash
-git clone https://github.com/USERNAME/UNSRAT-Climate-AI.git
-cd UNSRAT-Climate-AI
+git clone https://github.com/natalio123/Peramalan-Cuaca-Project.git
+cd Peramalan-Cuaca-Project
 
 pip install -r requirements.txt
 streamlit run app.py
