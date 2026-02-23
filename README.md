@@ -21,61 +21,61 @@
 
 ---
 
-## 🧩 Ringkasan Proyek
+## 🧩 Project Summary
 
-UNSRAT Climate AI adalah sistem **prakiraan cuaca mikro-kampus** berbasis Machine Learning untuk area kampus UNSRAT Bahu.  
-Proyek ini dirancang agar dapat:
+UNSRAT Climate AI is a Machine Learning based **micro-campus weather forecasting** system for the UNSRAT Bahu campus area.   
 
-- memprediksi suhu dan hujan hingga **6 jam ke depan**,  
-- memantau kondisi secara **real-time**,  
-- memberi **rekomendasi tindakan** yang mudah dipahami pengguna.
+This project is designed to:
+- Predict temperature and rainfall up to **6 hours in advance**,  
+- Monitor conditions in **real-time**,  
+- Provide **action recommendations** that are easy for users to understand.
 
 ---
 
-## 🏗 Arsitektur Sistem
+## 🏗 System Architecture
 
-Sistem terdiri dari tiga komponen utama:
+The system consists of three main components:
 
 1. **Automated ETL Pipeline (n8n)**  
-   Mengambil data real-time dari API BMKG setiap jam dan menyimpannya ke Google Sheets.
+   Retrieve real-time data from the BMKG API every hour and save it to Google Sheets
 
 2. **Machine Learning Engine (Python – Jupyter – XGBoost)**  
-   Digunakan untuk preprocessing, EDA, feature engineering, training, dan evaluasi.
+   Used for preprocessing, EDA, feature engineering, training, and evaluation.
 
 3. **Deployment Layer (Streamlit App)**  
-   Menyajikan prediksi dan rekomendasi tindakan kepada pengguna.
+   Providing predictions and recommendations for action to users.
 
-### 📌 *Gambar Arsitektur Workflow (ETL n8n)*  
+### 📌 *Architecture Workflow Diagram (ETL n8n)*  
 <img src="assets/gambar/Etl.png" width="800"/>
 
-### 📌 *Gambar UI Streamlit*  
+### 📌 *Streamlit UI Image*  
 <img src="assets/gambar/UI Streamlit.png" width="800"/>
 
 ---
 
-## 🧠 Metodologi Teknis
+## 🧠 Technical Methodology
 
-### 1. **Pendekatan Forecasting**
-- Menggunakan **Direct Multi-Step Model**
-- Model terpisah untuk T+1, T+3, T+6 jam
-- Error rendah dan stabil meski horizon waktu meningkat
+### 1. **Forecasting Approach**
+- Used **Direct Multi-Step Model**
+- Separate models T+1, T+3, T+6 jam
+- Low and stable error even as the time horizon increases.
 
-### 2. **Strategi Hybrid (Regresi + Klasifikasi)**
-- Suhu → `XGBRegressor`
-- Hujan → `XGBClassifier` dengan custom threshold (>5mm)
+### 2. **Hybrid Strategy (Regressor + Classification)**
+- Temperature → `XGBRegressor`
+- Rain → `XGBClassifier` with custom threshold (>5mm)
 
-### 3. **Evaluasi**
-Data evaluasi memakai hold-out Januari 2025 – Sekarang.
+### 3. **Evaluation**
+Evaluation data using hold out January 2025 - Present.
 
-| Horizon | MAE Suhu (°C) | Akurasi Hujan | Status |
+| Horizon | MAE Suhu (°C) | Rainfall Accuracy | Status |
 |--------|---------------|---------------|--------|
-| T+1    | 0.36          | 83%           | ✔ Sangat Presisi |
-| T+3    | 0.59          | 74%           | ✔ Andal |
-| T+6    | 0.71          | 72%           | ✔ Cukup |
+| T+1    | 0.36          | 83%           | ✔ Very Precision |
+| T+3    | 0.59          | 74%           | ✔ Reliable |
+| T+6    | 0.71          | 72%           | ✔ Enough |
 
 ---
 
-## 🧪 Fitur Utama
+## 🧪 Main Feature
 
 - 🔁 **ETL otomatis** via n8n  
 - 📊 **Prediksi cuaca** (suhu & hujan)  
