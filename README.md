@@ -85,16 +85,16 @@ Evaluation data using hold out January 2025 - Present.
 
 ---
 
-## 👤 **Kontribusi Saya (Applicant Section)**
+## 👤 **My Contribution (Applicant Section)**
 
-Kontribusi saya pada proyek ini meliputi:
+My contributions to this project include:
 
 ### 🔹 **1. ETL & Data Engineering**
-- Mendesain dan membangun pipeline **n8n** untuk fetching data BMKG setiap jam  
-- Membersihkan data, memperbaiki anomali, menyiapkan dataset final
+- Designing and building an **n8n** pipeline to fetch BMKG data every hour.
+- Cleaning data, fixing anomalies, preparing the final dataset.
 
 ### 🔹 **2. Machine Learning (End-to-End Notebook)**
-Saya membuat notebook lengkap mulai dari:
+I created a complete notebook starting from:
 
 - **Business Understanding**  
 - **Data Understanding (EDA, analisis cuaca Manado)**  
@@ -105,9 +105,9 @@ Saya membuat notebook lengkap mulai dari:
 - **Export model untuk deployment**
 
 ### 🔹 **3. Deployment & UI Improvement**
-- Membantu merapikan tampilan Streamlit  
-- Menambah mode gelap & UX improvements  
-- Membuat fitur notifikasi rekomendasi tindakan  
+- Helping to tidy up the Streamlit display.  
+- Added dark mode & UX improvements. 
+- Creating a recommended action notification feature.  
 
 ---
 
@@ -123,7 +123,7 @@ streamlit run app.py
 ```
 ---
 
-## 📂 Struktur Folder <br>
+## 📂 Folder Structure <br>
 📦 ML_PROJECT <br>
  ┣ 📂 app/ <br>
  ┣ 📂 assets/ <br>
@@ -133,20 +133,16 @@ streamlit run app.py
  ┣ README.md
  ┗ requirements.txt
 
-## 📜 Disclaimer Akademis
+## 📜 Academic Disclaimer
 
-Sumber Data Latih:  Model dilatih menggunakan data historis cuaca dari Open-Meteo Historical Weather API dengan koordinat Latitude: 1.48218 dan Longitude: 124.84892 (wilayah Kota Manado). 
-Rentang data historis diambil mulai 13 November 2020 sampai 7 Desember 2025.
-Sistem menerima input real-time dari kampus lokasi (Bahu), sehingga tetap relevan untuk mikroklimat
+Training Data Source: The model was trained using historical weather data from the Open-Meteo Historical Weather API with coordinates Latitude: 1.48218 and Longitude: 124.84892 (Manado City area). The historical data range is taken from November 13, 2020 to December 7, 2025. The system receives real-time input from the campus location (Bahu), ensuring it remains relevant to the microclimate.
 
-Mikro-klimat Kampus:</b> Meskipun sumber data berasal dari koordinat kota Manado secara umum, sistem dirancang untuk menerima input kondisi cuaca aktual dari lingkungan Kampus UNSRAT saat inference, sehingga hasil prediksi tetap relevan dengan mikro-klimat lokal kampus.
+Kampus Microclimate: </b> Although the data source comes from the general coordinates of the city of Manado, the system is designed to receive input on actual weather conditions from the UNSRAT campus environment during inference, so that the prediction results remain relevant to the local microclimate of the campus.
 
-Keterbatasan Sistem n8n: Pengambilan data cuaca real-time dilakukan menggunakan n8n Cloud Free Tier
-yang memiliki batas pemakaian selama 14 hari dan batas jumlah eksekusi harian. 
-Keterbatasan ini dapat memengaruhi kontinuitas otomatisasi pipeline data apabila masa percobaan telah habis.
+Limitations of the n8n System: Real-time weather data retrieval is performed using n8n Cloud Free Tier, which has a 14-day usage limit and a daily execution limit. These limitations may affect the continuity of data pipeline automation once the trial period has expired.
 
-## 📬 Kontak
-Jika ingin berdiskusi atau merekrut saya, hubungi:
+## 📬 Contact
+If you would like to discuss or hire me, please contact me:
 nataliotumuahi@gmail.com
 
 </body>
